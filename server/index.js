@@ -1,4 +1,4 @@
-require('dotenv').config();
+require('dotenv').config(); //By Merjam Farj Al-Beibani
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -21,5 +21,6 @@ mongoose.connect(process.env.MONGO_URI)
 // API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
+
 
 app.listen(5000, () => console.log('Server running on port 5000'));
