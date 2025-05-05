@@ -18,7 +18,7 @@ const upload = multer({ storage: storage });
 
 // POST /api/register
 router.post("/register", upload.single("file"), async (req, res) => {
-  const { fullname, surname, email, phone, password } = req.body;
+  const { name, surname, email, phone, password } = req.body;
   console.log(req.body); 
   console.log(req.file); 
 
@@ -36,7 +36,7 @@ router.post("/register", upload.single("file"), async (req, res) => {
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
     const newUser = new User({
-      fullname,
+      name,
       surname,
       email,
       phone,
@@ -77,7 +77,7 @@ router.post('/login', async (req, res) => {
 
     res.status(200).json({
       message: 'Login successful',
-      user: { id: user._id, email: user.email, fullname: user.fullname },
+      user: { id: user._id, email: user.email, name: user.name },
     });
   } catch (error) {
     console.error(error);

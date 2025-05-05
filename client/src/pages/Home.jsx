@@ -18,8 +18,8 @@ export default function Home() {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % activities.length);
-    }, 6000); //change activity every 6 seconds
-    return () => clearInterval(interval); // cleanup
+    }, 3000); //change activity every 3 seconds
+    return () => clearInterval(interval); // cleanup, so next activity shows
   }, []);
 
   return (
@@ -57,8 +57,11 @@ export default function Home() {
         <p>Find and join exciting student activities. Register and get verified with your Mecenat card.</p>
         <p><Link to="/register">Click here to register</Link> or explore more about UniVibe!</p>
 
-        {/* Rotating Activity */}
-        <div style={{
+        
+
+        {/* Rotating Activity */} 
+        <div 
+        style={{ //user should lately when I have developed this side more, click on this routating activity and redirect to activites only if logged in.
           marginTop: '30px',
           padding: '15px',
           background: '#e6e6e6',
@@ -69,6 +72,20 @@ export default function Home() {
           justifyContent: 'center',
           alignItems: 'center'
         }}>
+          {/* Date to show to not clear when the activites are */}
+  <div style={{ fontSize: '1rem', marginBottom: '8px', color: '#333' }}>
+  {(() => {
+      const date = new Date().toLocaleDateString('en-EN', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+      });
+      return date.charAt(0).toUpperCase() + date.slice(1); //makes the weekday in uppercase, because im so picky with things hehe
+
+    })()}
+    
+  </div>
           <strong>Upcoming: </strong>{activities[index]}
         </div>
       </main>

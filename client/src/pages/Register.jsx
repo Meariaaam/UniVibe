@@ -5,7 +5,7 @@ import logo from '../assets/uni.jpg';
 
 export default function Register() {
   const [form, setForm] = useState({
-    fullname: '',
+    name: '',
     surname: '',
     email: '',
     phone: '',
@@ -21,7 +21,7 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('fullname', form.fullname);
+    formData.append('name', form.name);
     formData.append('surname', form.surname);
     formData.append('email', form.email);
     formData.append('phone', form.phone);
@@ -69,7 +69,7 @@ export default function Register() {
       <main style={{ padding: '90px 20px 20px' }}>
         <h2>Register</h2>
         <form onSubmit={handleSubmit} encType="multipart/form-data">
-          <input type="text" name="fullname" placeholder="Full Name" onChange={handleChange} required /><br />
+          <input type="text" name="name" placeholder="Name" onChange={handleChange} required /><br />
           <input type="text" name="surname" placeholder="Surname" onChange={handleChange} required /><br />
           <input type="email" name="email" placeholder="Email" onChange={handleChange} required /><br />
           <input type="tel" name="phone" placeholder="Phone Number" onChange={handleChange} required /><br />
