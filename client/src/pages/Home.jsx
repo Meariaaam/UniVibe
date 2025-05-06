@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'; //By Merjam Farj Al-Beibani
+// By Merjam Farj Al-Beibani
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/uni.jpg';
+import './Home.css'; // Import the CSS file
 
 export default function Home() {
-
-
   const activities = [
     '📚 Study group at the library',
     '🎉 Uni party this Friday!',
@@ -18,77 +18,74 @@ export default function Home() {
   useEffect(() => {
     const interval = setInterval(() => {
       setIndex((prev) => (prev + 1) % activities.length);
-    }, 3000); //change activity every 3 seconds
-    return () => clearInterval(interval); // cleanup, so next activity shows
+    }, 3000);
+    return () => clearInterval(interval);
   }, []);
 
+  const currentDate = new Date().toLocaleDateString('en-EN', {
+    weekday: 'long',
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  });
+
+
+  // By Sara Shmerti
   return (
-    <div>
-      {/* Header */}
-      <header style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '10px 20px',
-        backgroundColor: '#f2f2f2',
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 1000,
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <img src={logo} alt="UniVibe logo" style={{ height: '50px', marginRight: '10px' }} />
-          <h1 style={{ margin: 0 }}>UniVibe Activities</h1>
+    <div className="home">
+      <header className="navbar">
+        <div className="logo-container">
+          <img src={logo} alt="UniVibe logo" />
+          <h1>UniVibe</h1>
         </div>
-        <nav>
-          <ul style={{ display: 'flex', gap: '15px', listStyle: 'none', margin: 0 }}>
-            <li><Link to="/home">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/login">Login</Link></li>
-            <li><Link to="/register">Register</Link></li>
-          </ul>
+        <nav className="nav-links">
+          <Link to="/home">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/login">Login</Link>
+          <Link to="/register">Register</Link>
         </nav>
       </header>
 
-      {/* Main Content */}
-      <main style={{ padding: '100px 20px 20px' }}>
-        <h2>Welcome to UniVibe 🎉</h2>
-        <p>Find and join exciting student activities. Register and get verified with your Mecenat card.</p>
-        <p><Link to="/register">Click here to register</Link> or explore more about UniVibe!</p>
+      <section className="intro">
+        <h2> Connecting Campus Life </h2>
+        <p> Where students meet and grow - together.</p>
 
-        
-
-        {/* Rotating Activity */} 
-        <div 
-        style={{ //user should lately when I have developed this side more, click on this routating activity and redirect to activites only if logged in.
-          marginTop: '30px',
-          padding: '15px',
-          background: '#e6e6e6',
-          borderRadius: '10px',
-          textAlign: 'center',
-          fontSize: '1.2rem',
-          transition: 'opacity 0.5s ease-in-out',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}>
-          {/* Date to show to not clear when the activites are */}
-  <div style={{ fontSize: '1rem', marginBottom: '8px', color: '#333' }}>
-  {(() => {
-      const date = new Date().toLocaleDateString('en-EN', {
-        weekday: 'long',
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      });
-      return date.charAt(0).toUpperCase() + date.slice(1); //makes the weekday in uppercase, because im so picky with things hehe
-
-    })()}
-    
-  </div>
+        <section className="rotating-activity">
+        <div className="activity-date">
+          {currentDate.charAt(0).toUpperCase() + currentDate.slice(1)}
+          </div>
           <strong>Upcoming: </strong>{activities[index]}
+          </section>
+          
+      </section>
+
+      <section className="how-it-works">
+        <h3> How it works </h3>
+        <div className="cards">
+          <div className="card blue">
+            <span role="img" aria-label="Register">📝</span>
+            <h4><Link to="/register">Register</Link></h4>
+            <p>Use your Mecenat card to join</p>
+            {/* <p>Click to create an account <Link to="/register">Register</Link> </p> */}
+          </div>
+          <div className="card green">
+            <span role="img" aria-label="Verify">📧</span>
+            <h4>Get Verified</h4>
+            <p>We'll notify you via email.</p>
+          </div>
+          <div className="card red">
+            <span role="img" aria-label="Event">🎉</span>
+            <h4>Join Events</h4>
+            <p>Start participating or hosting!</p>
+          </div>
         </div>
-      </main>
+      </section>
+
+      <section className="help">
+        <h4> Need Help? </h4>
+        <p> Reach out via our <Link to="/contact">contact page</Link> and we'll get back to you quickly</p>
+        </section>
+
     </div>
   );
 }
