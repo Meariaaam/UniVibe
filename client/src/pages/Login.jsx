@@ -1,11 +1,13 @@
-import { useState } from 'react'; //By Merjam Farj AL-Beibani
+import { useState } from 'react'; // By Merjam Farj AL-Beibani
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/uni.jpg';
+import './Login.css';
 
 export default function Login() {
   const [form, setForm] = useState({ email: '', password: '' });
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -17,9 +19,8 @@ export default function Login() {
       const res = await axios.post('http://localhost:5000/api/auth/login', form);
       setMessage('✅ ' + res.data.message);
 
-      if (response.status === 200) {
-        setMessage('Login successful');
-
+      if (res.status === 200) {
+        navigate('/activities');
       }
     } catch (err) {
       setMessage('❌ ' + (err.response?.data?.message || 'Login failed'));
@@ -29,24 +30,13 @@ export default function Login() {
   return (
     <div>
       {/* Header */}
-      <header style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '10px 20px',
-        backgroundColor: '#f2f2f2',
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 1000,
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <img src={logo} alt="UniVibe logo" style={{ height: '50px', marginRight: '10px' }} />
-          <h1 style={{ margin: 0 }}>UniVibe</h1>
+      <header className="login-header">
+        <div className="login-logo-box">
+          <img src={logo} alt="UniVibe logo" className="login-logo" />
+          <h1 className="login-title">UniVibe</h1>
         </div>
         <nav>
-          <ul style={{ display: 'flex', gap: '15px', listStyle: 'none', margin: 0 }}>
+          <ul className="login-nav">
             <li><Link to="/">Home</Link></li>
             <li><Link to="/register">Register</Link></li>
             <li><Link to="/about">About</Link></li>
@@ -55,11 +45,11 @@ export default function Login() {
       </header>
 
       {/* Main */}
-      <main style={{ padding: '90px 20px 20px' }}>
+      <main className="login-main">
         <h2>Hello User!</h2>
-        <form onSubmit={handleSubmit}>
-          <input type="email" name="email" placeholder="Email" onChange={handleChange} required /><br />
-          <input type="password" name="password" placeholder="Password" onChange={handleChange} required /><br /><br />
+        <form onSubmit={handleSubmit} className="login-form">
+          <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
+          <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
           <button type="submit">Login</button>
         </form>
         <p>{message}</p>

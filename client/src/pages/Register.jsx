@@ -2,6 +2,7 @@ import { useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import logo from '../assets/uni.jpg';
+import './Register.css';
 
 export default function Register() {
   const [form, setForm] = useState({
@@ -40,24 +41,13 @@ export default function Register() {
   return (
     <div>
       {/* Header */}
-      <header style={{
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'space-between',
-        padding: '10px 20px',
-        backgroundColor: '#f2f2f2',
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 1000,
-      }}>
-        <div style={{ display: 'flex', alignItems: 'center' }}>
-          <img src={logo} alt="UniVibe logo" style={{ height: '50px', marginRight: '10px' }} />
-          <h1 style={{ margin: 0 }}>UniVibe</h1>
+      <header className="register-header">
+        <div className="register-logo-box">
+          <img src={logo} alt="UniVibe logo" className="register-logo" />
+          <h1 className="register-title">UniVibe</h1>
         </div>
         <nav>
-          <ul style={{ display: 'flex', gap: '15px', listStyle: 'none', margin: 0 }}>
+          <ul className="register-nav">
             <li><Link to="/">Home</Link></li>
             <li><Link to="/about">About</Link></li>
             <li><Link to="/login">Login</Link></li>
@@ -66,15 +56,15 @@ export default function Register() {
       </header>
 
       {/* Form */}
-      <main style={{ padding: '90px 20px 20px' }}>
+      <main className="register-main">
         <h2>Register</h2>
-        <form onSubmit={handleSubmit} encType="multipart/form-data">
-          <input type="text" name="name" placeholder="Name" onChange={handleChange} required /><br />
-          <input type="text" name="surname" placeholder="Surname" onChange={handleChange} required /><br />
-          <input type="email" name="email" placeholder="Email" onChange={handleChange} required /><br />
-          <input type="tel" name="phone" placeholder="Phone Number" onChange={handleChange} required /><br />
-          <input type="password" name="password" placeholder="Password" onChange={handleChange} required /><br />
-          <input type="file" accept="image/*" onChange={(e) => setFile(e.target.files[0])} required /><br />
+        <form onSubmit={handleSubmit} encType="multipart/form-data" className="register-form">
+          <input type="text" name="name" placeholder="Name" onChange={handleChange} required />
+          <input type="text" name="surname" placeholder="Surname" onChange={handleChange} required />
+          <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
+          <input type="tel" name="phone" placeholder="Phone Number" onChange={handleChange} required />
+          <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
+          <input type="file" accept="image/*" onChange={(e) => setFile(e.target.files[0])} required />
           <button type="submit">Register</button>
         </form>
         <p>{message}</p>
