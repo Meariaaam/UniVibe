@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import logo from '../assets/uni.jpg';
+import './Users.css';
 
 export default function Users() {
   const [users, setUsers] = useState([]);
@@ -23,33 +24,43 @@ export default function Users() {
   };
 
   return (
-    <div>
+    <div className="users-container">
       {/* Header */}
-      <header>
-        <div>
-          <img src={logo} alt="UniVibe logo" />
-          <h1>UniVibe</h1>
+      <header className="users-header">
+        <div className="users-logo-box">
+          <img src={logo} alt="UniVibe logo" className="users-logo" />
+          <h1 className="users-title">UniVibe</h1>
         </div>
         <nav>
-          <ul>
+          <ul className="users-nav">
             <li><Link to="/admin">Admin Home</Link></li>
             <li><Link to="/signout">Sign out</Link></li>
           </ul>
         </nav>
       </header>
 
-      <main>
-        <h2>Pending User Verifications</h2>
-        {message && <p>{message}</p>}
+      <main className="users-main">
+        <h2 className="users-heading">Pending User Verifications</h2>
+        {message && <p className="users-message">{message}</p>}
 
         {users.length === 0 ? (
-          <p>No users pending verification.</p>
+          <p className="users-empty">No users pending verification.</p>
         ) : (
           users.map(user => (
-            <div key={user._id}>
+            <div key={user._id} className="users-card">
               <p>{user.name || 'No name'} ({user.email})</p>
-              <img src={`http://localhost:5000/${user.mecenatImage}`} width="100" alt="Mecenat" />
-              <button onClick={() => verifyUser(user._id)}>Verify</button>
+              <img
+                src={`http://localhost:5000/${user.mecenatImage}`}
+                width="100"
+                alt="Mecenat"
+                className="users-image"
+              />
+              <button
+                onClick={() => verifyUser(user._id)}
+                className="users-button"
+              >
+                Verify
+              </button>
             </div>
           ))
         )}
