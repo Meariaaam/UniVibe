@@ -8,9 +8,11 @@ const path = require('path');
 
 const app = express();
 
+
 // Middlewares
 app.use(cors());
 app.use(express.json());
+
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // MongoDB connection
