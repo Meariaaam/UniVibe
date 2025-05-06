@@ -7,7 +7,7 @@ import Admin from './pages/Admin.jsx';
 import Users from './pages/Users.jsx';
 import SignOut from './pages/SignOut.jsx';
 import Activities from './pages/Activities.jsx';
-
+import './App.css';
 
 
 export default function App() {
