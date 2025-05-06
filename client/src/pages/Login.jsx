@@ -1,11 +1,12 @@
 import { useState } from 'react'; //By Merjam Farj AL-Beibani
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/uni.jpg';
 
 export default function Login() {
   const [form, setForm] = useState({ email: '', password: '' });
   const [message, setMessage] = useState('');
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -17,8 +18,9 @@ export default function Login() {
       const res = await axios.post('http://localhost:5000/api/auth/login', form);
       setMessage('✅ ' + res.data.message);
 
-      if (response.status === 200) {
-        setMessage('Login successful');
+      if (res.status === 200) {
+        navigate('/activities');
+
 
       }
     } catch (err) {

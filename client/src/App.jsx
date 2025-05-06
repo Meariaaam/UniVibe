@@ -6,6 +6,7 @@ import Login from './pages/Login.jsx';
 import Admin from './pages/Admin.jsx';
 import Users from './pages/Users.jsx';
 import SignOut from './pages/SignOut.jsx';
+import Activities from './pages/Activities.jsx';
 
 
 
@@ -20,6 +21,7 @@ export default function App() {
         <Route path="/admin" element={<Admin />} />
         <Route path="/users" element={<Users />} />
         <Route path="/signout" element={<SignOut />} />
+        <Route path="/activities" element={<Activities />} />  
       </Routes>
     </Router>
   );

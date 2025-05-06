@@ -1,0 +1,66 @@
+import { useEffect, useState } from 'react';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
+import logo from '../assets/uni.jpg';
+import './Activities.css';
+
+
+export default function Activities() {
+  const [activities, setActivities] = useState([]);
+
+  useEffect(() => {
+    const fetchActivities = async () => {
+      try {
+        const res = await axios.get('http://localhost:5000/api/activities');
+        setActivities(res.data);
+      } catch (err) {
+        console.error('Failed to fetch activities:', err);
+      }
+    };
+
+    fetchActivities();
+  }, []);
+
+  const handleBook = (activityId) => {
+    alert(`Booked activity with ID: ${activityId}`);
+    // You can expand this with a POST request to your backend
+  };
+
+  return (
+    <div className="activities-page">
+      <header className="header">
+        <div className="logo-title">
+          <img src={logo} alt="UniVibe logo" className="logo" />
+          <h1>Activities</h1>
+        </div>
+        <nav>
+          <ul className="nav-links">
+            <li><Link to="/signout">Sign out</Link></li>
+          </ul>
+        </nav>
+      </header>
+
+      <main className="activities-main">
+        <h2>Available Activities</h2>
+        <div className="activities-list">
+          {activities.length === 0 ? (
+            <p>No activities available right now.</p>
+          ) : (
+            activities.map((act) => (
+              <div key={act._id} className="activity-card">
+                <h3>{act.name}</h3>
+                <p><strong>Address:</strong> {act.address}</p>
+                <p><strong>Time:</strong> {act.time}</p>
+                <p><strong>Max Participants:</strong> {act.quantity}</p>
+                <p><strong>Price:</strong> {act.price} SEK</p>
+                <button onClick={() => handleBook(act._id)} className="book-button">
+                  Book
+                </button>
+              </div>
+            ))
+          )}
+        </div>
+      </main>
+    </div>
+  );
+}
