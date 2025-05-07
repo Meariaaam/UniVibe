@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/uni.jpg';
 import './Home.css'; // Import the CSS file
 
-export default function Home() {
+export default function Home() { //This will change later, only for now
   const activities = [
     '📚 Study group at the library',
     '🎉 Uni party this Friday!',
@@ -30,7 +30,7 @@ export default function Home() {
   });
 
 
-  // By Sara Shmerti
+  // By Sara Shmerti, Merjam Farj Al-Beibani
   return (
     <div className="home">
       <header className="navbar">
