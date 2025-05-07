@@ -1,4 +1,5 @@
-import { useState } from 'react'; // By Merjam Farj AL-Beibani
+// By Merjam Farj AL-Beibani
+import { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/uni.jpg';
@@ -27,9 +28,10 @@ export default function Login() {
     }
   };
 
+
+  // By Sara Shmerti
   return (
-    <div>
-      {/* Header */}
+    <div className="login-page">
       <header className="login-header">
         <div className="login-logo-box">
           <img src={logo} alt="UniVibe logo" className="login-logo" />
@@ -38,21 +40,24 @@ export default function Login() {
         <nav>
           <ul className="login-nav">
             <li><Link to="/">Home</Link></li>
-            <li><Link to="/register">Register</Link></li>
             <li><Link to="/about">About</Link></li>
+            <li><Link to="/register">Register</Link></li>
           </ul>
         </nav>
       </header>
 
-      {/* Main */}
       <main className="login-main">
-        <h2>Hello User!</h2>
-        <form onSubmit={handleSubmit} className="login-form">
-          <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
-          <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
-          <button type="submit">Login</button>
-        </form>
-        <p>{message}</p>
+        <div className="login-card">
+          <h2>Welcome Back</h2>
+          <p className="login-subtext"> Log in to connect with your campus community.</p>
+          <form onSubmit={handleSubmit} className="login-form">
+            <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
+            <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
+            <button type="submit">Login</button>
+            <p className="login-message">{message}</p>
+          </form>
+          <p className="login-note">Don't have an account? <Link to="/register">Register here</Link>.</p>
+        </div>
       </main>
     </div>
   );
