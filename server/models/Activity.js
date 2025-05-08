@@ -1,12 +1,12 @@
+// server/models/Activity.js
 const mongoose = require('mongoose');
 
 const activitySchema = new mongoose.Schema({
-  name: String,
-  address: String,
-  time: String,
-  quantity: Number,
-  price: Number,
-  createdAt: { type: Date, default: Date.now },
+  name: { type: String, required: true },
+  address: { type: String, required: true },
+  time: { type: String, required: true },
+  quantity: { type: Number, required: true },
+  price: { type: Number, required: true }
 });
 
 module.exports = mongoose.model('Activity', activitySchema);

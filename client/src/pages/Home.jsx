@@ -39,7 +39,7 @@ export default function Home() {
           <h1>UniVibe</h1>
         </div>
         <nav className="nav-links">
-          <Link to="/home">Home</Link>
+          <Link to="/">Home</Link>
           <Link to="/about">About</Link>
           <Link to="/login">Login</Link>
           <Link to="/register">Register</Link>
