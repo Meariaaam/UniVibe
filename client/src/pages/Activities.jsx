@@ -23,7 +23,7 @@ export default function Activities() {
 
   const handleBook = (activityId) => {
     alert(`Booked activity with ID: ${activityId}`);
-    // You can expand this with a POST request to your backend
+    
   };
 
   return (

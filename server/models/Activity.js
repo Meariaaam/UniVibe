@@ -1,5 +1,4 @@
-// server/models/Activity.js
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'); //By Merjam Farj Al-Beibani
 
 const activitySchema = new mongoose.Schema({
   name: { type: String, required: true },
