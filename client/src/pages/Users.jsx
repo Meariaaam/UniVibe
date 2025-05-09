@@ -55,6 +55,7 @@ export default function Users() {
               </div>
               <nav>
                 <ul className="admin-nav">
+                  <li><Link to="/home">Home</Link></li>
                   <li><Link to="/users">Users</Link></li>
                   <li><Link to="/signout">Sign out</Link></li>
                 </ul>

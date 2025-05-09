@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const SignOut = () => {
   const navigate = useNavigate();
-          navigate('/5173');
+          navigate('/home'); //redirects to home when sign out
 
 
   return (
