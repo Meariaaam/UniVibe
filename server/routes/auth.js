@@ -42,7 +42,7 @@ router.post("/register", upload.single("file"), async (req, res) => {
       phone,
       password: hashedPassword,
       mecenatImage: req.file.path,  // Path to the uploaded file
-      isVerified: false,  // Default to false, will change it manually later for verification
+      isVerified: false,  // Default to false, will change it manually later for verification, works in mongodb, postman and admin panel.
     });
 
     await newUser.save();
@@ -63,12 +63,12 @@ router.post('/login', async (req, res) => {
     const user = await User.findOne({ email }).select('+password'); 
 
     if (!user) {
-      return res.status(400).json({ message: 'Invalid credentials' });
+      return res.status(400).json({ message: 'Invalid User' });
     }
 
     const isMatch = await bcrypt.compare(password, user.password);
     if (!isMatch) {
-      return res.status(400).json({ message: 'Invalid credentials' });
+      return res.status(400).json({ message: 'Invalid password' });
     }
 
     if (!user.isVerified) {

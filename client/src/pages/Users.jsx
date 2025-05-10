@@ -11,55 +11,82 @@ export default function Users() {
   useEffect(() => {
     axios.get('http://localhost:5000/api/admin/pending')
       .then(res => setUsers(res.data))
-      .catch(err => console.error(err));
+      .catch(err => {
+        console.error(err);
+        setMessage('❌ Could not load users');
+      });
   }, []);
 
-  const verifyUser = (id) => {
-    axios.put(`http://localhost:5000/api/admin/verify/${id}`)
-      .then(() => {
-        setUsers(users.filter(user => user._id !== id));
-        setMessage('✅ User verified successfully');
-      })
-      .catch(() => setMessage('❌ Failed to verify user'));
+  const toggleVerification = (id, currentStatus) => {
+    const newStatus = !currentStatus;
+  
+    axios.put(
+      `http://localhost:5000/api/admin/verify/${id}`,
+      { isVerified: newStatus },
+      {
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      }
+    )
+    .then(() => {
+      setUsers(prevUsers =>
+        prevUsers.map(user =>
+          user._id === id ? { ...user, isVerified: newStatus } : user
+        )
+      );
+      setMessage(`✅ User ${newStatus ? 'verified' : 'unverified'} successfully`);
+    })
+    .catch((error) => {
+      console.error('Verification update failed:', error);
+      setMessage('❌ Failed to update user verification');
+    });
   };
+  
+  
 
   return (
     <div className="users-container">
       {/* Header */}
-      <header className="users-header">
-        <div className="users-logo-box">
-          <img src={logo} alt="UniVibe logo" className="users-logo" />
-          <h1 className="users-title">UniVibe</h1>
-        </div>
-        <nav>
-          <ul className="users-nav">
-            <li><Link to="/admin">Admin Home</Link></li>
-            <li><Link to="/signout">Sign out</Link></li>
-          </ul>
-        </nav>
-      </header>
+      <header className="admin-header">
+              <div className="admin-logo-box">
+                <img src={logo} alt="UniVibe logo" className="admin-logo" />
+                <h1 className="admin-title">UniVibe</h1>
+              </div>
+              <nav>
+                <ul className="admin-nav">
+                  <li><Link to="/home">Home</Link></li>
+                  <li><Link to="/users">Users</Link></li>
+                  <li><Link to="/signout">Sign out</Link></li>
+                </ul>
+              </nav>
+            </header>
 
       <main className="users-main">
-        <h2 className="users-heading">Pending User Verifications</h2>
+        <h2 className="users-heading">User Verification Panel</h2>
         {message && <p className="users-message">{message}</p>}
 
         {users.length === 0 ? (
-          <p className="users-empty">No users pending verification.</p>
+          <p className="users-empty">No users found.</p>
         ) : (
           users.map(user => (
             <div key={user._id} className="users-card">
-              <p>{user.name || 'No name'} ({user.email})</p>
-              <img
-                src={`http://localhost:5000/${user.mecenatImage}`}
-                width="100"
-                alt="Mecenat"
-                className="users-image"
-              />
+              <p><strong>Name:</strong> {user.name || 'No name'} {user.surname || ''}</p>
+              <p><strong>Email:</strong> {user.email}</p>
+              <p><strong>Status:</strong> {user.isVerified ? '✅ Verified' : '⏳ Pending'}</p>
+              {user.mecenatImage && (
+                <img
+                  src={`http://localhost:5000/${user.mecenatImage}`}
+                  alt="Mecenat"
+                  className="users-image"
+                />
+              )}
+              <br />
               <button
-                onClick={() => verifyUser(user._id)}
-                className="users-button"
+                onClick={() => toggleVerification(user._id, user.isVerified)}
+                className={`users-button ${user.isVerified ? 'unverify' : 'verify'}`}
               >
-                Verify
+                {user.isVerified ? 'Unverify' : 'Verify'}
               </button>
             </div>
           ))

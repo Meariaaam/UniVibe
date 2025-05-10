@@ -1,135 +1,128 @@
+/* Fullscreen center layout */
+.admin-main {
+  height: auto;
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-top: 100px; /* To offset fixed header */
+  background-color: #f8f9fa;
+}
+
 .admin-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background-color: #f2f2f2;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-  }
-  
-  .admin-logo-box {
-    display: flex;
-    align-items: center;
-  }
-  
-  .admin-logo {
-    height: 50px;
-    margin-right: 10px;
-  }
-  
-  .admin-title {
-    margin: 0;
-  }
-  
-  .admin-nav {
-    display: flex;
-    gap: 15px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .admin-nav li a {
-    text-decoration: none;
-    color: #007bff;
-  }
-  
-  .admin-nav li a:hover {
-    text-decoration: underline;
-  }
-  
-  .admin-main {
-    height: 100vh;
-    width: 100vw;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding-top: 80px;
-    box-sizing: border-box;
-    background-color: #ffffff;
-    overflow-y: auto;
-  }
-  
-  .admin-box {
-    background-color: #ffffff;
-    padding: 30px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    border-radius: 12px;
-    min-width: 350px;
-    text-align: center;
-  }
-  
-  .add-button {
-    font-size: 24px;
-    padding: 5px 15px;
-    border-radius: 50%;
-    border: none;
-    background-color: #28a745;
-    color: #fff;
-    cursor: pointer;
-    margin-bottom: 10px;
-  }
-  
-  .admin-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    margin-top: 10px;
-  }
-  
-  .admin-form input {
-    padding: 8px;
-    border-radius: 4px;
-    border: 1px solid #ccc;
-  }
-  
-  .save-button {
-    padding: 8px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-  }
-  
-  .activity-list {
-    margin-top: 30px;
-    width: 500px;
-    max-height: 400px;
-    overflow-y: auto;
-  }
-  
-  .activity-card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 15px;
-    background-color: #f9f9f9;
-  }
-  
-  .activity-buttons {
-    display: flex;
-    gap: 10px;
-    margin-top: 10px;
-  }
-  
-  .edit-button {
-    background-color: #ffc107;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    color: #000;
-  }
-  
-  .remove-button {
-    background-color: #dc3545;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 5px;
-    color: #fff;
-  }
-  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px;
+  background-color: #f2f2f2;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+}
+
+.admin-logo-box {
+  display: flex;
+  align-items: center;
+}
+
+.admin-logo {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.admin-title {
+  margin: 0;
+}
+
+.admin-nav {
+  display: flex;
+  gap: 15px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Activity box */
+.admin-box {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.add-button {
+  font-size: 24px;
+  padding: 6px 18px 11px 18px;
+  border-radius: 50%;
+  border: none;
+  background-color: #28a745;
+  color: #fff;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.admin-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-form input {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.save-button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Activity list */
+.activity-list {
+  width: 100%;
+  max-width: 500px;
+}
+
+.activity-card {
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: #f9f9f9;
+}
+
+.activity-buttons {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.edit-button {
+  background-color: #ffc107;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  color: #000;
+  cursor: pointer;
+}
+
+.remove-button {
+  background-color: #dc3545;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+}

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from 'react'; //By Merjam Farj Al-beibani
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import logo from '../assets/uni.jpg';
@@ -22,7 +22,7 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = new FormData();
-    formData.append('name', form.name);
+    formData.append('name', form.name); 
     formData.append('surname', form.surname);
     formData.append('email', form.email);
     formData.append('phone', form.phone);
@@ -48,7 +48,7 @@ export default function Register() {
         </div>
         <nav>
           <ul className="register-nav">
-            <li><Link to="/">Home</Link></li>
+            <li><Link to="/home">Home</Link></li>
             <li><Link to="/about">About</Link></li>
             <li><Link to="/login">Login</Link></li>
           </ul>

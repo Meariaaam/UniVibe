@@ -23,22 +23,23 @@ export default function Activities() {
 
   const handleBook = (activityId) => {
     alert(`Booked activity with ID: ${activityId}`);
-    // You can expand this with a POST request to your backend
+    
   };
 
   return (
     <div className="activities-page">
-      <header className="header">
-        <div className="logo-title">
-          <img src={logo} alt="UniVibe logo" className="logo" />
-          <h1>Activities</h1>
-        </div>
-        <nav>
-          <ul className="nav-links">
-            <li><Link to="/signout">Sign out</Link></li>
-          </ul>
-        </nav>
-      </header>
+      <header className="admin-header">
+              <div className="admin-logo-box">
+                <img src={logo} alt="UniVibe logo" className="admin-logo" />
+                <h1 className="admin-title">UniVibe</h1>
+              </div>
+              <nav>
+                <ul className="admin-nav">
+                  <li><Link to="/users">Users</Link></li>
+                  <li><Link to="/signout">Sign out</Link></li>
+                </ul>
+              </nav>
+            </header>
 
       <main className="activities-main">
         <h2>Available Activities</h2>
