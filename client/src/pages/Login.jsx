@@ -31,20 +31,18 @@ export default function Login() {
 
   // By Sara Shmerti
   return (
-    <div className="login-page">
-      <header className="login-header">
-        <div className="login-logo-box">
-          <img src={logo} alt="UniVibe logo" className="login-logo" />
-          <h1 className="login-title">UniVibe</h1>
-        </div>
-        <nav>
-          <ul className="login-nav">
-            <li><Link to="/home">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/register">Register</Link></li>
-          </ul>
-        </nav>
-      </header>
+     <div className="home">
+          <header className="navbar">
+            <div className="logo-container">
+              <img src={logo} alt="UniVibe logo" />
+              <h1>UniVibe</h1>
+            </div>
+            <nav className="nav-links">
+              <Link to="/home">Home</Link>
+              <Link to="/about">About</Link>
+              <Link to="/register">Register</Link>
+            </nav>
+          </header>
 
       <main className="login-main">
         <div className="login-card">

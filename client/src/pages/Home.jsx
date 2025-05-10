@@ -30,7 +30,7 @@ export default function Home() { //This will change later, only for now
   });
 
 
-  // By Sara Shmerti, Merjam Farj Al-Beibani
+  // By Sara Shmerti
   return (
     <div className="home">
       <header className="navbar">
