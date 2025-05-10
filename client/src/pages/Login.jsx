@@ -32,24 +32,22 @@ export default function Login() {
   // By Sara Shmerti
   return (
     <div className="login-page">
-      <header className="login-header">
-        <div className="login-logo-box">
-          <img src={logo} alt="UniVibe logo" className="login-logo" />
-          <h1 className="login-title">UniVibe</h1>
-        </div>
-        <nav>
-          <ul className="login-nav">
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/register">Register</Link></li>
-          </ul>
-        </nav>
-      </header>
-
-      <main className="login-main">
+    <><header className="navbar">
+      <div className="logo-container">
+        <img src={logo} alt="UniVibe logo" />
+        <h1>UniVibe</h1>
+      </div>
+      <nav className="nav-links">
+        <Link to="/home">Home</Link>
+        <Link to="/about">About</Link>
+        <Link to="/register">Register</Link>
+      </nav>
+    </header>
+    
+    <main className="login-main">
         <div className="login-card">
           <h2>Welcome Back</h2>
-          <p className="login-subtext"> Log in to connect with your campus community.</p>
+          <p className="login-subtext">Log in to connect with your campus community.</p>
           <form onSubmit={handleSubmit} className="login-form">
             <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
             <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
@@ -59,6 +57,7 @@ export default function Login() {
           <p className="login-note">Don't have an account? <Link to="/register">Register here</Link>.</p>
         </div>
       </main>
+    </>
     </div>
   );
 }
