@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import logo from '../assets/uni.jpg';
 import './Users.css';
+import Header from '../components/Header';
+
 
 export default function Users() {
   const [users, setUsers] = useState([]);
@@ -48,19 +50,7 @@ export default function Users() {
   return (
     <div className="users-container">
       {/* Header */}
-      <header className="admin-header">
-              <div className="admin-logo-box">
-                <img src={logo} alt="UniVibe logo" className="admin-logo" />
-                <h1 className="admin-title">UniVibe</h1>
-              </div>
-              <nav>
-                <ul className="admin-nav">
-                  <li><Link to="/home">Home</Link></li>
-                  <li><Link to="/users">Users</Link></li>
-                  <li><Link to="/signout">Sign out</Link></li>
-                </ul>
-              </nav>
-            </header>
+      <Header />
 
       <main className="users-main">
         <h2 className="users-heading">User Verification Panel</h2>

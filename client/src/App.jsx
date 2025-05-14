@@ -7,24 +7,53 @@ import Admin from './pages/Admin.jsx';
 import Users from './pages/Users.jsx';
 import SignOut from './pages/SignOut.jsx';
 import Activities from './pages/Activities.jsx';
-import './App.css'
-
+import ContactUs from './pages/contactUs.jsx';
+import PrivateRoute from './pages/PrivateRoute.jsx';
+import AdminRoute from './pages/AdminRoute.jsx';
+import './App.css';
 
 export default function App() {
   return (
     <Router>
       <Routes>
-        {/* ✅ Redirect root path to /home */}
         <Route path="/" element={<Navigate to="/home" />} />
-
         <Route path="/home" element={<Home />} />
         <Route path="/register" element={<Register />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/admin" element={<Admin />} />
-        <Route path="/users" element={<Users />} />
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/admin" element={<AdminRoute><Admin /></AdminRoute>} />
+        <Route path="/users" element={<AdminRoute><Users /></AdminRoute>} />
+        <Route path="/activities" element={<PrivateRoute><Activities /></PrivateRoute>} />
         <Route path="/signout" element={<SignOut />} />
-        <Route path="/activities" element={<Activities />} />  
+
+        {/* Protected Route: only logged-in users can access */}
+        <Route
+          path="/activities"
+          element={
+            <PrivateRoute>
+              <Activities />
+            </PrivateRoute>
+          }
+        />
+
+        {/* Admin-Only Routes */}
+        <Route
+          path="/admin"
+          element={
+            <AdminRoute>
+              <Admin />
+            </AdminRoute>
+          }
+        />
+        <Route
+          path="/users"
+          element={
+            <AdminRoute>
+              <Users />
+            </AdminRoute>
+          }
+        />
       </Routes>
     </Router>
   );

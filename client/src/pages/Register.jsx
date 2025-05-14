@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import logo from '../assets/uni.jpg';
 import './Register.css';
+import Header from '../components/Header';
+
 
 export default function Register() {
   const [form, setForm] = useState({
@@ -41,19 +43,7 @@ export default function Register() {
   return (
     <div>
       {/* Header */}
-      <header className="register-header">
-        <div className="register-logo-box">
-          <img src={logo} alt="UniVibe logo" className="register-logo" />
-          <h1 className="register-title">UniVibe</h1>
-        </div>
-        <nav>
-          <ul className="register-nav">
-            <li><Link to="/home">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/login">Login</Link></li>
-          </ul>
-        </nav>
-      </header>
+      <Header />
 
       {/* Form */}
       <main className="register-main">

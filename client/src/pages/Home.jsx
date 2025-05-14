@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/uni.jpg';
 import './Home.css'; // Import the CSS file
+import Header from '../components/Header';
 
 export default function Home() { //This will change later, only for now
   const activities = [
@@ -33,18 +34,7 @@ export default function Home() { //This will change later, only for now
   // By Sara Shmerti, Merjam Farj Al-Beibani
   return (
     <div className="home">
-      <header className="navbar">
-        <div className="logo-container">
-          <img src={logo} alt="UniVibe logo" />
-          <h1>UniVibe</h1>
-        </div>
-        <nav className="nav-links">
-          <Link to="/home">Home</Link>
-          <Link to="/about">About</Link>
-          <Link to="/login">Login</Link>
-          <Link to="/register">Register</Link>
-        </nav>
-      </header>
+      <Header />
 
       <section className="intro">
         <h2> Connecting Campus Life </h2>
