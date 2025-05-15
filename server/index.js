@@ -8,6 +8,7 @@ const path = require('path');
 const authRoutes = require('./routes/auth');
 const adminRoutes = require('./routes/admin');
 const activityRoutes = require('./routes/activities'); // ✅ New line
+const contactRoutes = require('./routes/contact'); // ⬅️ Add this line
 
 const app = express();
 
@@ -28,6 +29,7 @@ mongoose.connect(process.env.MONGO_URI, {
 app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
 app.use('/api/activities', activityRoutes); // ✅ New route for activities
+app.use('/api/contact', contactRoutes); // ⬅️ Add this
 
 // Server start
 const PORT = process.env.PORT || 5000;

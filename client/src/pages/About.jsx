@@ -2,25 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/uni.jpg';
 import './About.css';
+import Header from '../components/Header';
+
 
 export default function About() {
   return (
     <div>
       {/* Header */}
-      <header className="about-header">
-        <div className="about-logo-box">
-          <img src={logo} alt="UniVibe logo" className="about-logo" />
-          <h1 className="about-title">About UniVibe</h1>
-        </div>
-        <nav>
-          <ul className="about-nav">
-            <li><Link to="/home">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/login">Login</Link></li>
-            <li><Link to="/register">Register</Link></li>
-          </ul>
-        </nav>
-      </header>
+      <Header />
 
       {/* Main Content */}
       <main className="about-main">

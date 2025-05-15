@@ -53,4 +53,20 @@ router.delete('/:id', async (req, res) => {
   }
 });
 
+// GET - Get booked users for a specific activity
+router.get('/:id/bookings', async (req, res) => {
+  try {
+    const activity = await Activity.findById(req.params.id);
+    if (!activity) {
+      return res.status(404).json({ message: 'Activity not found' });
+    }
+    res.json(activity.bookedUsers);
+  } catch (error) {
+    console.error('GET /api/activities/:id/bookings error:', error);
+    res.status(500).json({ message: error.message });
+  }
+});
+
+
+
 module.exports = router;
