@@ -5,7 +5,7 @@ import logo from '../assets/uni.jpg';
 import './Home.css'; // Import the CSS file
 import Header from '../components/Header';
 
-export default function Home() { //This will change later, only for now
+export default function Home() {
   const activities = [
     '📚 Study group at the library',
     '🎉 Uni party this Friday!',
@@ -31,7 +31,8 @@ export default function Home() { //This will change later, only for now
   });
 
 
-  // By Sara Shmerti, Merjam Farj Al-Beibani
+  // By Sara Shmerti
+
   return (
     <div className="home">
       <Header />
@@ -40,36 +41,34 @@ export default function Home() { //This will change later, only for now
         <h2> Connecting Campus Life </h2>
         <p> Where students meet and grow - together.</p>
 
-        <section className="rotating-activity">
-        <div className="activity-date">
-          {currentDate.charAt(0).toUpperCase() + currentDate.slice(1)}
-          </div>
-          <strong>Upcoming: </strong>{activities[index]}
+            <section className="rotating-activity">
+              <div className="activity-date">
+                {currentDate.charAt(0).toUpperCase() + currentDate.slice(1)}
+              </div>
+              <strong>Upcoming: </strong>{activities[index]}
+            </section>
           </section>
-          
-      </section>
 
-      <section className="how-it-works">
-        <h3> How it works </h3>
-        <div className="cards">
-          <div className="card blue">
-            <span role="img" aria-label="Register">📝</span>
-            <h4><Link to="/register">Register</Link></h4>
-            <p>Use your Mecenat card to join</p>
-            {/* <p>Click to create an account <Link to="/register">Register</Link> </p> */}
-          </div>
-          <div className="card green">
-            <span role="img" aria-label="Verify">📧</span>
-            <h4>Get Verified</h4>
-            <p>We'll notify you via email.</p>
-          </div>
-          <div className="card red">
-            <span role="img" aria-label="Event">🎉</span>
-            <h4>Join Events</h4>
-            <p>Start participating or hosting!</p>
-          </div>
-        </div>
-      </section>
+          <section className="how-it-works">
+            <h3>How it works</h3>
+            <div className="cards">
+              <div className="card blue">
+                <span role="img" aria-label="Register">📝</span>
+                <h4><Link to="/register">Register</Link></h4>
+                <p>Use your Mecenat card to join</p>
+              </div>
+              <div className="card green">
+                <span role="img" aria-label="Verify">📧</span>
+                <h4>Get Verified</h4>
+                <p>We'll notify you via email.</p>
+              </div>
+              <div className="card red">
+                <span role="img" aria-label="Event">🎉</span>
+                <h4>Join Events</h4>
+                <p>Start participating or hosting!</p>
+              </div>
+            </div>
+          </section>
 
       <section className="help">
         <h4> Need Help? </h4>
