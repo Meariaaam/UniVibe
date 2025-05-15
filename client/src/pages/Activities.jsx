@@ -3,6 +3,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import logo from '../assets/uni.jpg';
 import './Activities.css';
+import Header from '../components/Header';
+
 
 
 export default function Activities() {
@@ -28,18 +30,7 @@ export default function Activities() {
 
   return (
     <div className="activities-page">
-      <header className="admin-header">
-              <div className="admin-logo-box">
-                <img src={logo} alt="UniVibe logo" className="admin-logo" />
-                <h1 className="admin-title">UniVibe</h1>
-              </div>
-              <nav>
-                <ul className="admin-nav">
-                  <li><Link to="/users">Users</Link></li>
-                  <li><Link to="/signout">Sign out</Link></li>
-                </ul>
-              </nav>
-            </header>
+      <Header />
 
       <main className="activities-main">
         <h2>Available Activities</h2>

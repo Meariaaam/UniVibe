@@ -5,6 +5,8 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import logo from '../assets/uni.jpg';
 import './Register.css';
+import Header from '../components/Header';
+
 
 export default function Register() {
   const [form, setForm] = useState({
@@ -40,41 +42,27 @@ export default function Register() {
     }
   };
 
-
   // By Sara Shmerti
 
   return (
-    <><header className="navbar">
-      <div className="logo-container">
-        <img src={logo} alt="UniVibe logo" />
-        <h1>UniVibe</h1>
-      </div>
-      <nav className="nav-links">
-        <Link to="/home">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/login">Login</Link>
-        <Link to="/register">Register</Link>
-      </nav>
-    </header>
+    <div>
+      {/* Header */}
+      <Header />
 
-      /* Register Form */
+      {/* Form */}
       <main className="register-main">
-        <div className="register-card">
-          <h2>Create Account</h2>
-          <p className="register-subtext">Join the UniVibe campus community.</p>
-
-          <form onSubmit={handleSubmit} encType="multipart/form-data" className="register-form">
-            <input type="text" name="name" placeholder="Name" onChange={handleChange} required />
-            <input type="text" name="surname" placeholder="Surname" onChange={handleChange} required />
-            <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
-            <input type="tel" name="phone" placeholder="Phone Number" onChange={handleChange} required />
-            <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
-            <input type="file" accept="image/*" onChange={(e) => setFile(e.target.files[0])} required />
-            <button type="submit">Register</button>
-          </form>
-
-          <p className="register-message">{message}</p>
-        </div>
-      </main></>
+        <h2>Register</h2>
+        <form onSubmit={handleSubmit} encType="multipart/form-data" className="register-form">
+          <input type="text" name="name" placeholder="Name" onChange={handleChange} required />
+          <input type="text" name="surname" placeholder="Surname" onChange={handleChange} required />
+          <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
+          <input type="tel" name="phone" placeholder="Phone Number" onChange={handleChange} required />
+          <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
+          <input type="file" accept="image/*" onChange={(e) => setFile(e.target.files[0])} required />
+          <button type="submit">Register</button>
+        </form>
+        <p>{message}</p>
+      </main>
+    </div>
   );
 }

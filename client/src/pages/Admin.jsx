@@ -1,7 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/uni.jpg';
 import './Admin.css';
+import Header from '../components/Header';
+
+
 
 export default function Admin() {
   const [showForm, setShowForm] = useState(false);
@@ -20,6 +23,22 @@ export default function Admin() {
     fetchActivities();
   }, []);
 
+  const [selectedBookings, setSelectedBookings] = useState([]);
+  const [showBookingsIndex, setShowBookingsIndex] = useState(null);
+
+  const handleShowBookings = async (index) => {
+  const activity = activities[index];
+  try {
+    const res = await fetch(`http://localhost:5000/api/activities/${activity._id}/bookings`);
+    const data = await res.json();
+    setSelectedBookings(data);
+    setShowBookingsIndex(index);
+  } catch (err) {
+    console.error('Error fetching bookings:', err);
+  }
+};
+
+
   const fetchActivities = async () => {
     try {
       const response = await fetch('http://localhost:5000/api/activities');
@@ -29,6 +48,8 @@ export default function Admin() {
       console.error('Error fetching activities:', error);
     }
   };
+
+  const adminBoxRef = useRef(null);
 
   const handleAddClick = () => {
     setShowForm(!showForm);
@@ -40,16 +61,44 @@ export default function Admin() {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-  
-    const correctedData = {
-      ...formData,
-      quantity: parseInt(formData.quantity),
-      price: parseFloat(formData.price)
-    };
-  
-    try {
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  // Validate date format using regex
+  const timeRegex = /^\d{2}-\d{2}-\d{4} \d{2}:\d{2}$/;
+  if (!timeRegex.test(formData.time)) {
+    alert('❌ Invalid format. Use DD-MM-YYYY HH:MM');
+    return;
+  }
+
+  // Parse date parts
+  const [datePart, timePart] = formData.time.split(' ');
+  const [day, month, year] = datePart.split('-').map(Number);
+  const [hours, minutes] = timePart.split(':').map(Number);
+
+  // Create a Date object
+  const dateObj = new Date(year, month - 1, day, hours, minutes);
+
+  // Check if the date is valid
+  if (isNaN(dateObj.getTime()) || dateObj.getDate() !== day || dateObj.getMonth() !== month - 1 || dateObj.getFullYear() !== year) {
+    alert('❌ Invalid date or time');
+    return;
+  }
+
+  // Check if the date is in the future
+  if (dateObj <= new Date()) {
+    alert('❌ The time must be in the future');
+    return;
+  }
+
+  // Continue to submit if all checks pass
+  const correctedData = {
+    ...formData,
+    quantity: parseInt(formData.quantity),
+    price: parseFloat(formData.price)
+  };
+
+  try {
       let response;
       if (editingIndex !== null) {
         // Update existing activity
@@ -93,11 +142,17 @@ export default function Admin() {
     }
   };  
 
-  const handleEdit = (index) => {
+    const handleEdit = (index) => {
     setFormData(activities[index]);
     setEditingIndex(index);
     setShowForm(true);
+
+    // Scroll to the form
+    setTimeout(() => {
+      adminBoxRef.current?.scrollIntoView({ behavior: 'smooth' });
+    }, 100);
   };
+
 
   const handleRemove = async (index) => {
     const activityToDelete = activities[index];
@@ -121,30 +176,30 @@ export default function Admin() {
 
   return (
     <div>
-      <header className="admin-header">
-        <div className="admin-logo-box">
-          <img src={logo} alt="UniVibe logo" className="admin-logo" />
-          <h1 className="admin-title">UniVibe</h1>
-        </div>
-        <nav>
-          <ul className="admin-nav">
-            <li><Link to="/users">Users</Link></li>
-            <li><Link to="/signout">Sign out</Link></li>
-          </ul>
-        </nav>
-      </header>
+      <Header />
 
       <main className="admin-main">
-        <div className="admin-box">
+        <div className="admin-box"  ref={adminBoxRef}>
+          <h2>Welcome to the Admin dashboard <br />
+          Here can you Add or Edit activity</h2>
           <button className="add-button" onClick={handleAddClick}>+</button>
 
           {showForm && (
             <form className="admin-form" onSubmit={handleSubmit}>
               <input type="text" name="name" placeholder="Activity name" value={formData.name} onChange={handleChange} required />
               <input type="text" name="address" placeholder="Address" value={formData.address} onChange={handleChange} required />
-              <input type="text" name="time" placeholder="Time" value={formData.time} onChange={handleChange} required />
+              <input
+                type="text"
+                name="time"
+                placeholder="DD-MM-YYYY HH:MM"
+                value={formData.time}
+                onChange={handleChange}
+                required
+                pattern="\d{2}-\d{2}-\d{4} \d{2}:\d{2}"
+                title="Format: DD-MM-YYYY HH:MM"
+              />
               <input type="number" name="quantity" placeholder="Max participants" value={formData.quantity} onChange={handleChange} required />
-              <input type="number" name="price" placeholder="Price" value={formData.price} onChange={handleChange} required />
+              <input type="number" name="price" placeholder="Price SEK" value={formData.price} onChange={handleChange} required />
               <button type="submit" className="save-button">
                 {editingIndex !== null ? 'Update Activity' : 'Save Activity'}
               </button>
@@ -160,6 +215,27 @@ export default function Admin() {
               <p><strong>Time:</strong> {act.time}</p>
               <p><strong>Max Students:</strong> {act.quantity}</p>
               <p><strong>Price:</strong> {act.price} SEK</p>
+              <p>
+                <strong>Booked:</strong>{' '}
+                <span
+                  className="booked-link"
+                  style={{ color: 'blue', cursor: 'pointer' }}
+                  onClick={() => handleShowBookings(index)}
+                >
+                  {act.bookedUsers?.length || 0}/{act.quantity}
+                </span>
+              </p>
+                {showBookingsIndex === index && selectedBookings.length > 0 && (
+                <div className="booking-list">
+                  <h4>Booked Users:</h4>
+                  <ul>
+                    {selectedBookings.map((user, idx) => (
+                      <li key={idx}>{user.firstName} {user.lastName}</li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+
               <div className="activity-buttons">
                 <button className="edit-button" onClick={() => handleEdit(index)}>Edit</button>
                 <button className="remove-button" onClick={() => handleRemove(index)}>Remove</button>

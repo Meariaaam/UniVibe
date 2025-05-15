@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/uni.jpg';
 import './Home.css'; // Import the CSS file
+import Header from '../components/Header';
 
 export default function Home() {
   const activities = [
@@ -33,27 +34,12 @@ export default function Home() {
   // By Sara Shmerti
 
   return (
-    <>
-      <header className="navbar">
-        <div className="container navbar-inner">
-          <div className="logo-container">
-            <img src={logo} alt="UniVibe logo" />
-            <h1>UniVibe</h1>
-          </div>
-          <div className="nav-links">
-            <Link to="/home">Home</Link>
-            <Link to="/about">About</Link>
-            <Link to="/login">Login</Link>
-            <Link to="/register">Register</Link>
-          </div>
-        </div>
-      </header>
+    <div className="home">
+      <Header />
 
-      <div className="page-wrapper">
-        <main className="container">
-          <section className="intro">
-            <h2>Connecting Campus Life</h2>
-            <p>Where students meet and grow - together.</p>
+      <section className="intro">
+        <h2> Connecting Campus Life </h2>
+        <p> Where students meet and grow - together.</p>
 
             <section className="rotating-activity">
               <div className="activity-date">
@@ -84,14 +70,11 @@ export default function Home() {
             </div>
           </section>
 
-          <section className="help">
-            <h4>Need Help?</h4>
-            <p>
-              Reach out via our <Link to="/contact">contact page</Link> and we'll get back to you quickly.
-            </p>
-          </section>
-        </main>
-      </div>
-    </>
+      <section className="help">
+        <h4> Need Help? </h4>
+        <p> Reach out via our <Link to="/contact">contact page</Link> and we'll get back to you quickly</p>
+        </section>
+
+    </div>
   );
 }
