@@ -1,4 +1,4 @@
-//By Merjam Farj Al-beibani
+// By Merjam Farj Al-beibani
 
 import { useState } from 'react'; 
 import axios from 'axios';
@@ -39,41 +39,42 @@ export default function Register() {
       setMessage('❌ Error: ' + (err.response?.data?.message || err.message));
     }
   };
-  
+
 
   // By Sara Shmerti
 
   return (
-    <div>
-      {/* Header */}
-      <header className="register-header">
-        <div className="register-logo-box">
-          <img src={logo} alt="UniVibe logo" className="register-logo" />
-          <h1 className="register-title">UniVibe</h1>
-        </div>
-        <nav>
-          <ul className="register-nav">
-            <li><Link to="/home">Home</Link></li>
-            <li><Link to="/about">About</Link></li>
-            <li><Link to="/login">Login</Link></li>
-          </ul>
-        </nav>
-      </header>
+    <><header className="navbar">
+      <div className="logo-container">
+        <img src={logo} alt="UniVibe logo" />
+        <h1>UniVibe</h1>
+      </div>
+      <nav className="nav-links">
+        <Link to="/home">Home</Link>
+        <Link to="/about">About</Link>
+        <Link to="/login">Login</Link>
+        <Link to="/register">Register</Link>
+      </nav>
+    </header>
 
-      {/* Form */}
+      /* Register Form */
       <main className="register-main">
-        <h2>Register</h2>
-        <form onSubmit={handleSubmit} encType="multipart/form-data" className="register-form">
-          <input type="text" name="name" placeholder="Name" onChange={handleChange} required />
-          <input type="text" name="surname" placeholder="Surname" onChange={handleChange} required />
-          <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
-          <input type="tel" name="phone" placeholder="Phone Number" onChange={handleChange} required />
-          <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
-          <input type="file" accept="image/*" onChange={(e) => setFile(e.target.files[0])} required />
-          <button type="submit">Register</button>
-        </form>
-        <p>{message}</p>
-      </main>
-    </div>
+        <div className="register-card">
+          <h2>Create Account</h2>
+          <p className="register-subtext">Join the UniVibe campus community.</p>
+
+          <form onSubmit={handleSubmit} encType="multipart/form-data" className="register-form">
+            <input type="text" name="name" placeholder="Name" onChange={handleChange} required />
+            <input type="text" name="surname" placeholder="Surname" onChange={handleChange} required />
+            <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
+            <input type="tel" name="phone" placeholder="Phone Number" onChange={handleChange} required />
+            <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
+            <input type="file" accept="image/*" onChange={(e) => setFile(e.target.files[0])} required />
+            <button type="submit">Register</button>
+          </form>
+
+          <p className="register-message">{message}</p>
+        </div>
+      </main></>
   );
 }

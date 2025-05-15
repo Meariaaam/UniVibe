@@ -30,33 +30,52 @@ export default function Login() {
 
 
   // By Sara Shmerti
-  return (
-     <div className="home">
-          <header className="navbar">
-            <div className="logo-container">
-              <img src={logo} alt="UniVibe logo" />
-              <h1>UniVibe</h1>
-            </div>
-            <nav className="nav-links">
-              <Link to="/home">Home</Link>
-              <Link to="/about">About</Link>
-              <Link to="/register">Register</Link>
-            </nav>
-          </header>
 
+  return (
+    <>
+      <header className="navbar">
+        <div className="container navbar-inner">
+          <div className="logo-container">
+            <img src={logo} alt="UniVibe logo" />
+            <h1>UniVibe</h1>
+          </div>
+          <div className="nav-links">
+            <Link to="/home">Home</Link>
+            <Link to="/about">About</Link>
+            <Link to="/login">Login</Link>
+            <Link to="/register">Register</Link>
+          </div>
+        </div>
+      </header>
+
+      {/* Login Form */}
       <main className="login-main">
         <div className="login-card">
           <h2>Welcome Back</h2>
           <p className="login-subtext">Log in to connect with your campus community.</p>
           <form onSubmit={handleSubmit} className="login-form">
-            <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
-            <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
+            <input
+              type="email"
+              name="email"
+              placeholder="Email"
+              aria-label="Email"
+              onChange={handleChange}
+              required />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
+              aria-label="Password"
+              onChange={handleChange}
+              required />
             <button type="submit">Login</button>
             <p className="login-message">{message}</p>
           </form>
-          <p className="login-note">Don't have an account? <Link to="/register">Register here</Link>.</p>
+          <p className="login-note">
+            Don't have an account? <Link to="/register">Register here</Link>.
+          </p>
         </div>
       </main>
-      </div>
+    </>
   );
-} 
+}

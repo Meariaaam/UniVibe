@@ -1,77 +1,129 @@
 /* By Sara Shmerti */
 
+/* General layout */
+body {
+  margin: 0;
+  background-color: #f9fafc;
+  font-family: 'Segoe UI', sans-serif;
+  color: #222;
+}
 
-.register-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background-color: #f2f2f2;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-  }
-  
-  .register-logo-box {
-    display: flex;
-    align-items: center;
-  }
-  
-  .register-logo {
-    height: 50px;
-    margin-right: 10px;
-  }
-  
-  .register-title {
-    margin: 0;
-  }
-  
-  .register-nav {
-    display: flex;
-    gap: 15px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .register-nav li a {
-    text-decoration: none;
-    color: #007bff;
-  }
-  
-  .register-nav li a:hover {
-    text-decoration: underline;
-  }
-  
-  .register-main {
-    padding: 90px 20px 20px;
-  }
-  
-  .register-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    max-width: 400px;
-  }
-  
-  .register-form input {
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .register-form button {
-    padding: 10px;
-    background-color: #28a745;
-    border: none;
-    color: white;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .register-form button:hover {
-    background-color: #218838;
-  }
-  
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.logo-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.logo-container img {
+  height: 40px;
+}
+
+.logo-container h1 {
+  margin: 0;
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+}
+
+.nav-links {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.nav-links a:hover {
+  color: #2563eb;
+}
+
+
+/* Main layout for register page */
+.register-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 120px; /* To account for fixed navbar */
+  padding-bottom: 40px;
+  min-height: 100vh;
+  background-color: #f9fbfc;
+}
+
+/* Register form card */
+.register-card {
+  background: #e0f4ff;
+  padding: 30px;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+.register-card h2 {
+  margin-bottom: 12px;
+  font-size: 30px;
+  font-weight: 700;
+}
+
+.register-subtext {
+  margin-bottom: 20px;
+  font-size: 15px;
+  color: #374151;
+}
+
+/* Form styling */
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.register-form input {
+  padding: 10px;
+  border: 1px solid #d1d5db;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.register-form button {
+  padding: 10px;
+  background-color: #2563eb;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.register-form button:hover {
+  background-color: #1e40af;
+}
+
+/* Message */
+.register-message {
+  font-size: 14px;
+  margin-top: 8px;
+}
