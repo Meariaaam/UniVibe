@@ -1,4 +1,6 @@
-import { useState } from 'react'; //By Merjam Farj Al-beibani
+// By Merjam Farj Al-beibani
+
+import { useState } from 'react'; 
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import logo from '../assets/uni.jpg';
@@ -39,6 +41,8 @@ export default function Register() {
       setMessage('❌ Error: ' + (err.response?.data?.message || err.message));
     }
   };
+
+  // By Sara Shmerti
 
   return (
     <div>
