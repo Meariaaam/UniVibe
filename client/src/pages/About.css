@@ -1,48 +1,97 @@
-.about-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 10px 20px;
-    background-color: #f2f2f2;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 1000;
-  }
-  
-  .about-logo-box {
-    display: flex;
-    align-items: center;
-  }
-  
-  .about-logo {
-    height: 50px;
-    margin-right: 10px;
-  }
-  
-  .about-title {
-    margin: 0;
-  }
-  
-  .about-nav {
-    display: flex;
-    gap: 15px;
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .about-nav li a {
-    text-decoration: none;
-    color: #007bff;
-  }
-  
-  .about-nav li a:hover {
-    text-decoration: underline;
-  }
-  
-  .about-main {
-    padding: 80px 20px 20px;
-  }
-  
+/* Sara Shmerti */
+
+.about-page {
+  background-color: #f9fafc;
+  min-height: 100vh;
+  padding-top: 120px;
+}
+
+.about-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.about-split {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 60px;
+}
+
+.about-text {
+  flex: 1;
+  min-width: 280px;
+}
+
+.about-text h2 {
+  font-size: 2rem;
+  color: #1f2937;
+  margin-bottom: 20px;
+}
+
+.about-text p {
+  color: #374151;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.about-image {
+  flex: 1;
+  text-align: center;
+}
+
+.about-image img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+}
+
+.about-features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.about-features {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.feature {
+  flex: 1 1 280px;
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Individual feature colors */
+.feature.one {
+  background-color: #e0f4ff; /* light blue */
+}
+
+.feature.two {
+  background-color: #e7f9f1; /* light green */
+}
+
+.feature.three {
+  background-color: #fff2f0; /* light pink */
+}
+
+.feature h4 {
+  font-size: 1.2rem;
+  margin-bottom: 10px;
+  color: #111827;
+}
+
+.feature p {
+  font-size: 0.95rem;
+  color: #4b5563;
+}

@@ -49,20 +49,27 @@ export default function Register() {
       {/* Header */}
       <Header />
 
-      {/* Form */}
+      /* Register Form */
       <main className="register-main">
-        <h2>Register</h2>
-        <form onSubmit={handleSubmit} encType="multipart/form-data" className="register-form">
-          <input type="text" name="name" placeholder="Name" onChange={handleChange} required />
-          <input type="text" name="surname" placeholder="Surname" onChange={handleChange} required />
-          <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
-          <input type="tel" name="phone" placeholder="Phone Number" onChange={handleChange} required />
-          <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
-          <input type="file" accept="image/*" onChange={(e) => setFile(e.target.files[0])} required />
-          <button type="submit">Register</button>
-        </form>
-        <p>{message}</p>
+        <div className="register-card">
+          <h2>Create Account</h2>
+          <p className="register-subtext">Join the UniVibe campus community.</p>
+
+          <form onSubmit={handleSubmit} encType="multipart/form-data" className="register-form">
+            <input type="text" name="name" placeholder="Name" onChange={handleChange} required />
+            <input type="text" name="surname" placeholder="Surname" onChange={handleChange} required />
+            <input type="email" name="email" placeholder="Email" onChange={handleChange} required />
+            <input type="tel" name="phone" placeholder="Phone Number" onChange={handleChange} required />
+            <input type="password" name="password" placeholder="Password" onChange={handleChange} required />
+            <input type="file" accept="image/*" onChange={(e) => setFile(e.target.files[0])} required />
+            <button type="submit">Register</button>
+            <p className="register-subtext">Already have an account? <Link to="/login">Login here.</Link></p>
+          </form>
+
+          <p className="register-message">{message}</p>
+        </div>
       </main>
-    </div>
+      </div>
   );
 }
+
