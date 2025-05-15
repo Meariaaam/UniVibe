@@ -1,42 +1,77 @@
+/*Sara Shmerti*/ 
+
+/* Container Styling */
 .contact-container {
-  max-width: 500px;
-  margin: 50px auto;
-  padding: 30px;
-  border: 1px solid #ccc;
-  border-radius: 15px;
-  background: #f9f9f9;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  max-width: 600px;
+  margin: 100px auto;
+  padding: 40px;
+  border-radius: 16px;
+  background: #fae7e4;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  font-family: 'Segoe UI', sans-serif;
 }
 
+/* Header */
+.contact-container h2 {
+  font-size: 1.8rem;
+  margin-bottom: 20px;
+  color: #1e293b;
+}
+
+/* Form Layout */
 .contact-form {
   display: flex;
   flex-direction: column;
-} 
+  gap: 16px;
+}
 
 .contact-form input,
 .contact-form textarea {
-  margin-bottom: 15px;
-  padding: 12px;
-  font-size: 16px;
+  padding: 12px 14px;
+  font-size: 15px;
   border-radius: 8px;
-  border: 1px solid #ddd;
+  border: 1px solid #d1d5db;
+  background-color: #f9fafb;
+  transition: border-color 0.3s;
 }
 
-.contact-form button {
-  padding: 12px;
-  font-size: 16px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 8px;
+.contact-form input:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.2);
+}
+
+/* File Upload Input */
+.contact-form input[type="file"] {
+  padding: 10px;
+  background-color: #f1f5f9;
+  border: 1px solid #cbd5e1;
   cursor: pointer;
 }
 
-.contact-form button:hover {
-  background-color: #45a049;
+/* Button Styling */
+.contact-form button {
+  background-color: #c83838;
+  color: white;
+  padding: 14px;
+  font-size: 16px;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
 }
 
+.contact-form button:hover {
+  background-color: #16a34a;
+}
+
+/* Status Message */
 .status-message {
-  margin-top: 15px;
-  font-weight: bold;
+  margin-top: 18px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #1e3a8a;
 }
