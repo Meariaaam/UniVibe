@@ -13,7 +13,7 @@ const ContactUs = () => {
   });
   const [file, setFile] = useState(null);
   const [status, setStatus] = useState('');
-
+ 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
