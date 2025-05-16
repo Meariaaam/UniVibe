@@ -49,7 +49,8 @@ export default function Register() {
       {/* Header */}
       <Header />
 
-      /* Register Form */
+      {/* Register Form */}
+
       <main className="register-main">
         <div className="register-card">
           <h2>Create Account</h2>
@@ -65,7 +66,7 @@ export default function Register() {
             <button type="submit">Register</button>
             <p className="register-subtext">Already have an account? <Link to="/login">Login here.</Link></p>
           </form>
-
+ 
           <p className="register-message">{message}</p>
         </div>
       </main>
