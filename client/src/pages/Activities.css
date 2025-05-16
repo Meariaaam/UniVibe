@@ -1,64 +1,123 @@
-/* Activities.css */
+/* Sara Shmerti */
+
 .activities-page {
-    font-family: Arial, sans-serif;
-  }
-  
-  .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background-color: #f2f2f2;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-  }
-  
-  .logo-title {
-    display: flex;
-    align-items: center;
-  }
-  
-  .logo {
-    height: 50px;
-    margin-right: 10px;
-  }
-  
-  .nav-links {
-    list-style: none;
-    display: flex;
-    gap: 15px;
-    margin: 0;
-  }
-  
-  .activities-main {
-    padding-top: 90px;
-    display: flex;
+  font-family: 'Segoe UI', sans-serif;
+  background: #f9fafc;
+  min-height: 100vh;
+}
+
+.activities-main {
+  padding-top: 100px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: 20px;
+}
+
+.activities-main h2 {
+  text-align: center;
+  margin-bottom: 90px;
+}
+
+.activities-layout {
+  display: flex;
+  flex-direction: row;
+  gap: 150px;
+  align-items: flex-start;
+}
+
+/* Sidebar */
+.sidebar {
+  min-width: 200px;
+  background: #f1f3f8;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  height: fit-content;
+}
+
+.sidebar h4 {
+  margin-bottom: 12px;
+  font-size: 16px;
+  color: #333;
+}
+
+.filter-button {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: none;
+  background-color: #e5eaff;
+  color: #1f2937;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: 0.2s ease;
+}
+
+.filter-button:hover,
+.filter-button.active {
+  background-color: #cfd9ff;
+}
+
+/* Activities Grid */
+.activities-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  flex: 1;
+}
+
+.activity-card {
+  background-color: #e3e8fc;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 1px 5px rgba(0,0,0,0.08);
+  transition: 0.3s ease;
+}
+
+.activity-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.activity-card h3 {
+  margin: 0 0 10px;
+  font-size: 18px;
+}
+
+.activity-card p {
+  margin: 5px 0;
+  font-size: 14px;
+}
+
+.book-button {
+  margin-top: 10px;
+  background-color: #2563eb;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.book-button:hover {
+  background-color: #31ab8b;
+}
+
+/* Responsive for small screens */
+@media (max-width: 768px) {
+  .activities-layout {
     flex-direction: column;
-    align-items: center;
   }
-  
+
+  .sidebar {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
   .activities-list {
-    width: 90%;
-    max-width: 600px;
-    margin-top: 20px;
+    grid-template-columns: 1fr;
   }
-  
-  .activity-card {
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    padding: 15px;
-    margin-bottom: 15px;
-    background-color: #f9f9f9;
-  }
-  
-  .book-button {
-    background-color: #007bff;
-    color: white;
-    border: none;
-    padding: 5px 10px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
+}
