@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
-import Home from './pages/Home.jsx';
-import Register from './pages/Register.jsx';
+import Home from './pages/home.jsx'; //case sensitive here
+import Register from './pages/register.jsx'; //case sensitive it should be capital but tried this
 import About from './pages/About.jsx';
 import Login from './pages/Login.jsx';
 import Admin from './pages/Admin.jsx';

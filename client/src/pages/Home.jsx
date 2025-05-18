@@ -1,4 +1,3 @@
-// By Merjam Farj Al-Beibani
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import logo from '../assets/uni.jpg';
@@ -30,8 +29,6 @@ export default function Home() {
     day: 'numeric',
   });
 
-
-  // By Sara Shmerti
 
   return (
     <div className="home">

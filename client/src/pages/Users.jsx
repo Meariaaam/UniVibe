@@ -42,7 +42,6 @@ export default function Users() {
     });
   };
 
-  /*Sara Shmerti*/
 
   return (
     <div className="users-container"> 

@@ -1,5 +1,3 @@
-// By Merjam Farj Al-beibani
-
 import { useState } from 'react'; 
 import axios from 'axios';
 import { Link } from 'react-router-dom';
@@ -42,7 +40,6 @@ export default function Register() {
     }
   };
 
-  // By Sara Shmerti
 
   return (
     <div>

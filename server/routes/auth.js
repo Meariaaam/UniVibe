@@ -1,4 +1,4 @@
-const express = require("express"); // By Merjam Farj Al-Beibani
+const express = require("express"); 
 const router = express.Router();
 const multer = require("multer");
 const User = require("../models/User");
@@ -17,7 +17,7 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 
-// ✅ POST /api/auth/register
+// POST /api/auth/register
 router.post("/register", upload.single("file"), async (req, res) => {
   const { name, surname, email, phone, password } = req.body;
 
@@ -25,7 +25,7 @@ router.post("/register", upload.single("file"), async (req, res) => {
     return res.status(400).json({ message: "Image file is required." });
   }
 
-  // ✅ Strong password validation
+  // Strong password validation
   const strongPasswordRegex = /^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/;
   if (!password || !strongPasswordRegex.test(password)) {
     return res.status(400).json({
@@ -61,7 +61,7 @@ router.post("/register", upload.single("file"), async (req, res) => {
   }
 });
 
-// ✅ POST /api/auth/login
+//  POST /api/auth/login
 router.post("/login", async (req, res) => {
   const { email, password } = req.body;
 
@@ -80,7 +80,7 @@ router.post("/login", async (req, res) => {
       return res.status(403).json({ message: "Your account is not verified yet" });
     }
 
-    // ✅ Create JWT token
+    // Create JWT token
     const token = jwt.sign(
       {
         id: user._id,

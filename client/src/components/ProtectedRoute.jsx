@@ -10,7 +10,7 @@ const ProtectedRoute = ({ children }) => {
   try {
     const decoded = jwtDecode(token);
 
-    // Optional: check if token is expired
+    // check if token is expired
     const now = Date.now() / 1000; // in seconds
     if (decoded.exp && decoded.exp < now) {
       localStorage.removeItem('token');
