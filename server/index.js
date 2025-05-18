@@ -1,4 +1,4 @@
-require('dotenv').config(); // By Merjam Farj Al-Beibani
+require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
@@ -7,8 +7,8 @@ const path = require('path');
 // Route imports
 const authRoutes = require('./routes/auth');
 const adminRoutes = require('./routes/admin');
-const activityRoutes = require('./routes/activities'); // ✅ New line
-const contactRoutes = require('./routes/contact'); // ⬅️ Add this line
+const activityRoutes = require('./routes/activities'); //New line
+const contactRoutes = require('./routes/contact'); 
 
 const app = express();
 
@@ -19,7 +19,7 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI, {
-  // useNewUrlParser: true, //this is not needed since its old version and not used in new mongodb node driver/MERI
+  // useNewUrlParser: true, //this is not needed since its old version and not used in new mongodb node driver
   // useUnifiedTopology: true
 })
 .then(() => console.log('MongoDB connected'))
@@ -28,8 +28,8 @@ mongoose.connect(process.env.MONGO_URI, {
 // API Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/admin', adminRoutes);
-app.use('/api/activities', activityRoutes); // ✅ New route for activities
-app.use('/api/contact', contactRoutes); // ⬅️ Add this
+app.use('/api/activities', activityRoutes); // New route for activities
+app.use('/api/contact', contactRoutes);
 
 // Server start
 const PORT = process.env.PORT || 5000;

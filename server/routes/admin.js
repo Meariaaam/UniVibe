@@ -19,7 +19,7 @@ router.put('/verify/:id', async (req, res) => {
     const { id } = req.params;
     const { isVerified } = req.body;
   
-    console.log('Received verification update:', req.body); // ✅ ADD THIS
+    console.log('Received verification update:', req.body); 
   
     if (!mongoose.Types.ObjectId.isValid(id)) {
       return res.status(400).json({ message: 'Invalid user ID' });

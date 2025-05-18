@@ -25,7 +25,7 @@ router.get('/', async (req, res) => {
   }
 });
 
-// ✅ PUT - Update an activity by ID
+// PUT - Update an activity by ID
 router.put('/:id', async (req, res) => {
   try {
     const updated = await Activity.findByIdAndUpdate(req.params.id, req.body, { new: true });
@@ -39,7 +39,7 @@ router.put('/:id', async (req, res) => {
   }
 });
 
-// ✅ DELETE - Delete an activity by ID
+// DELETE - Delete an activity by ID
 router.delete('/:id', async (req, res) => {
   try {
     const deleted = await Activity.findByIdAndDelete(req.params.id);

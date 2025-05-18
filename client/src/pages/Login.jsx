@@ -1,4 +1,3 @@
-// By Merjam Farj AL-Beibani
 import { useState } from 'react';
 import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
@@ -41,7 +40,6 @@ export default function Login() {
     }
   };
 
-  /*Sara Shmerti*/
 
   return (
     <div className="login-page">

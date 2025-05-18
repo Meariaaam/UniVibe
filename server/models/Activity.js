@@ -1,4 +1,4 @@
-const mongoose = require('mongoose'); //By Merjam Farj Al-Beibani
+const mongoose = require('mongoose'); 
 
 const activitySchema = new mongoose.Schema({
   name: { type: String, required: true },

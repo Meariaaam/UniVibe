@@ -13,7 +13,7 @@ const SignOut = () => {
     // 2. Show message
     setMessage('✅ You have signed out successfully.');
 
-    // 3. Wait 5 seconds and redirect to /home
+    // 3. Wait ... seconds and redirect to /home
     const timer = setTimeout(() => {
       navigate('/home');
     }, 2000); // 2 seconds 
