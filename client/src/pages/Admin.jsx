@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import logo from '../assets/uni.jpg';
 import './Admin.css';
 import Header from '../components/Header';
-
+ 
 
 
 export default function Admin() {
@@ -174,76 +174,84 @@ const handleSubmit = async (e) => {
     }
   };
 
+  /*Sara Shmerti*/
+
   return (
     <div>
       <Header />
 
       <main className="admin-main">
-        <div className="admin-box"  ref={adminBoxRef}>
-          <h2>Welcome to the Admin dashboard <br />
-          Here can you Add or Edit activity</h2>
-          <button className="add-button" onClick={handleAddClick}>+</button>
+  <div className="admin-dashboard">
+    {/* Admin box for form */}
+    <div className="admin-box" ref={adminBoxRef}>
+      <h2>Welcome to the Admin Dashboard</h2>
+      <p>Manage activities by adding, editing, or removing events.</p>
 
-          {showForm && (
-            <form className="admin-form" onSubmit={handleSubmit}>
-              <input type="text" name="name" placeholder="Activity name" value={formData.name} onChange={handleChange} required />
-              <input type="text" name="address" placeholder="Address" value={formData.address} onChange={handleChange} required />
-              <input
-                type="text"
-                name="time"
-                placeholder="DD-MM-YYYY HH:MM"
-                value={formData.time}
-                onChange={handleChange}
-                required
-                pattern="\d{2}-\d{2}-\d{4} \d{2}:\d{2}"
-                title="Format: DD-MM-YYYY HH:MM"
-              />
-              <input type="number" name="quantity" placeholder="Max participants" value={formData.quantity} onChange={handleChange} required />
-              <input type="number" name="price" placeholder="Price SEK" value={formData.price} onChange={handleChange} required />
-              <button type="submit" className="save-button">
-                {editingIndex !== null ? 'Update Activity' : 'Save Activity'}
-              </button>
-            </form>
-          )}
-        </div>
+      <button className="add-button" onClick={handleAddClick}>+</button>
 
-        <div className="activity-list">
-          {activities.map((act, index) => (
-            <div key={act._id} className="activity-card">
-              <h3>{act.name}</h3>
-              <p><strong>Address:</strong> {act.address}</p>
-              <p><strong>Time:</strong> {act.time}</p>
-              <p><strong>Max Students:</strong> {act.quantity}</p>
-              <p><strong>Price:</strong> {act.price} SEK</p>
-              <p>
-                <strong>Booked:</strong>{' '}
-                <span
-                  className="booked-link"
-                  style={{ color: 'blue', cursor: 'pointer' }}
-                  onClick={() => handleShowBookings(index)}
-                >
-                  {act.bookedUsers?.length || 0}/{act.quantity}
-                </span>
-              </p>
-                {showBookingsIndex === index && selectedBookings.length > 0 && (
-                <div className="booking-list">
-                  <h4>Booked Users:</h4>
-                  <ul>
-                    {selectedBookings.map((user, idx) => (
-                      <li key={idx}>{user.firstName} {user.lastName}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              <div className="activity-buttons">
-                <button className="edit-button" onClick={() => handleEdit(index)}>Edit</button>
-                <button className="remove-button" onClick={() => handleRemove(index)}>Remove</button>
-              </div>
-            </div>
-          ))}
-        </div>
-      </main>
+      {showForm && (
+        <form className="admin-form" onSubmit={handleSubmit}>
+          <input type="text" name="name" placeholder="Activity name" value={formData.name} onChange={handleChange} required />
+          <input type="text" name="address" placeholder="Address" value={formData.address} onChange={handleChange} required />
+          <input
+            type="text"
+            name="time"
+            placeholder="DD-MM-YYYY HH:MM"
+            value={formData.time}
+            onChange={handleChange}
+            required
+            pattern="\d{2}-\d{2}-\d{4} \d{2}:\d{2}"
+            title="Format: DD-MM-YYYY HH:MM"
+          />
+          <input type="number" name="quantity" placeholder="Max participants" value={formData.quantity} onChange={handleChange} required />
+          <input type="number" name="price" placeholder="Price SEK" value={formData.price} onChange={handleChange} required />
+          <button type="submit" className="save-button">
+            {editingIndex !== null ? 'Update Activity' : 'Save Activity'}
+          </button>
+        </form>
+      )}
     </div>
+
+    {/* Activities grid */}
+    <div className="activity-list">
+      {activities.map((act, index) => (
+        <div key={act._id} className="activity-card">
+          <h3>{act.name}</h3>
+          <p><strong>Address:</strong> {act.address}</p>
+          <p><strong>Time:</strong> {act.time}</p>
+          <p><strong>Max Students:</strong> {act.quantity}</p>
+          <p><strong>Price:</strong> {act.price} SEK</p>
+          <p>
+            <strong>Booked:</strong>{' '}
+            <span
+              className="booked-link"
+              style={{ color: 'blue', cursor: 'pointer' }}
+              onClick={() => handleShowBookings(index)}
+            >
+              {act.bookedUsers?.length || 0}/{act.quantity}
+            </span>
+          </p>
+
+          {showBookingsIndex === index && selectedBookings.length > 0 && (
+            <div className="booking-list">
+              <h4>Booked Users:</h4>
+              <ul>
+                {selectedBookings.map((user, idx) => (
+                  <li key={idx}>{user.firstName} {user.lastName}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <div className="activity-buttons">
+            <button className="edit-button" onClick={() => handleEdit(index)}>Edit</button>
+            <button className="remove-button" onClick={() => handleRemove(index)}>Remove</button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</main>
+</div>
   );
-}
+} 

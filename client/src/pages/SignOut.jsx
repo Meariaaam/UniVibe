@@ -16,7 +16,7 @@ const SignOut = () => {
     // 3. Wait 5 seconds and redirect to /home
     const timer = setTimeout(() => {
       navigate('/home');
-    }, 2000); // 2 seconds
+    }, 2000); // 2 seconds 
 
     // Cleanup timer if component unmounts
     return () => clearTimeout(timer);

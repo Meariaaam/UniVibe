@@ -1,9 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import logo from '../assets/uni.jpg';
-import './ContactUs.css';
-import Header from '../components/Header';
 
+import Header from '../components/Header';
+import './ContactUs.css';
 
 const ContactUs = () => {
   const [formData, setFormData] = useState({
@@ -41,17 +39,19 @@ const ContactUs = () => {
       const result = await response.json();
 
       if (response.ok) {
-        setStatus('Message sent successfully!');
+        setStatus('✅ Message sent successfully!');
         setFormData({ name: '', email: '', message: '' });
         setFile(null);
       } else {
-        setStatus(`Error: ${result.error}`);
+        setStatus(`❌ Error: ${result.error}`);
       }
     } catch (error) {
       console.error(error);
-      setStatus('Failed to send message.');
+      setStatus('❌ Failed to send message.');
     }
   };
+
+  /*Sara Shmerti*/
 
   return (
     <>
@@ -79,6 +79,7 @@ const ContactUs = () => {
           <textarea
             name="message"
             placeholder="Your Message"
+            rows="5"
             value={formData.message}
             onChange={handleChange}
             required

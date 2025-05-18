@@ -1,86 +1,82 @@
+/*Sara Shmerti*/
+
 .users-container {
-  font-family: Arial, sans-serif;
+  font-family: 'Segoe UI', sans-serif;
   padding: 20px;
   background-color: #f4f7fa;
-}
-
-.users-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #fff;
-  padding: 15px 30px;
-  border-bottom: 1px solid #ddd;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-}
-
-.users-logo-box {
-  display: flex;
-  align-items: center;
-}
-
-.users-logo {
-  width: 50px;
-  height: auto;
-  margin-right: 10px;
-}
-
-.users-title {
-  font-size: 24px;
-  font-weight: bold;
-  color: #333;
-}
-
-.users-nav {
-  list-style: none;
-  display: flex;
-  gap: 15px;
-}
-
-.users-nav li a {
-  text-decoration: none;
-  color: #007bff;
-}
-
-.users-nav li a:hover {
-  text-decoration: underline;
+  min-height: 100vh;
 }
 
 .users-main {
-  margin-top: 30px;
+  margin-top: 40px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 20px;
 }
 
 .users-heading {
   font-size: 22px;
-  margin-bottom: 15px;
+  margin-bottom: 50px; 
+  text-align: center;
 }
+
 
 .users-message {
   margin-bottom: 15px;
   font-weight: bold;
   color: green;
+  text-align: center;
 }
 
 .users-empty {
   font-style: italic;
   color: #666;
+  text-align: center;
 }
+
+.users-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 20px;
+  margin-top: 20px;
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 700px) {
+  .users-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
 
 .users-card {
   background-color: #fff;
   border: 1px solid #ccc;
-  padding: 15px;
-  margin-bottom: 20px;
+  padding: 15px; 
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .users-image {
   margin: 10px 0;
-  width: 120px;
+  width: 150px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  transition: transform 0.3s ease-in-out; 
 }
+
+.users-image:hover {
+  transform: scale(1.3); 
+  z-index: 2;
+}
+
 
 .users-button {
   padding: 8px 16px;
