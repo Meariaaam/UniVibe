@@ -25,7 +25,6 @@ if (process.env.NODE_ENV === 'production') {
   });
 }
 
-
 // MongoDB connection
 mongoose.connect(process.env.MONGO_URI, {
   // useNewUrlParser: true, //this is not needed since its old version and not used in new mongodb node driver
