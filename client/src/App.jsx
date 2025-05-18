@@ -7,7 +7,7 @@ import Admin from './pages/Admin.jsx';
 import Users from './pages/Users.jsx';
 import SignOut from './pages/SignOut.jsx';
 import Activities from './pages/Activities.jsx';
-import ContactUs from './pages/contactUs.jsx';
+import ContactUs from './pages/ContactUs.jsx';
 import PrivateRoute from './pages/PrivateRoute.jsx';
 import AdminRoute from './pages/AdminRoute.jsx';
 import './App.css';
