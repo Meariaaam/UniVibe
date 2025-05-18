@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "concurrently \"npm run dev --prefix client\" \"npm start --prefix server\"",
     "build": "vite build",
-    "start": "node server/index.js"
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",

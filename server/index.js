@@ -31,6 +31,9 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/activities', activityRoutes); // New route for activities
 app.use('/api/contact', contactRoutes);
 
+
+app.get('/', (req, res) => {
+  res.send('UniVibe backend is running 🚀');
 // Server start
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
