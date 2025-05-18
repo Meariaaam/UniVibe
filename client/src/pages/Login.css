@@ -19,15 +19,15 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 120px; /* space for fixed navbar */
+  padding-top: 120px; 
   padding-bottom: 40px;
-  min-height: calc(100vh - 80px); /* avoids overflow issues */
-  background-color: #f9fbfc;
+  min-height: calc(100vh - 80px); 
+  background-color: #f9fcfa;
   box-sizing: border-box;
 }
 
 
-/* Navbar Styles (universal for all pages) */
+/* Navbar Styles */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -83,11 +83,10 @@ body {
   padding: 0 20px;
 }
 
-
-
+ 
 /* Login Card */
 .login-card {
-  background: #e0f4ff;
+  background: #e7f9f1;
   padding: 30px;
   border-radius: 12px;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
@@ -131,7 +130,7 @@ body {
 
 .login-form button {
   padding: 10px;
-  background-color: #2563eb;
+  background-color: #51c987;
   color: white;
   border: none;
   border-radius: 6px;

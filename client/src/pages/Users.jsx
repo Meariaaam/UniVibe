@@ -1,11 +1,8 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
-import logo from '../assets/uni.jpg';
+import axios from 'axios'; 
 import './Users.css';
 import Header from '../components/Header';
-
-
+ 
 export default function Users() {
   const [users, setUsers] = useState([]);
   const [message, setMessage] = useState('');
@@ -21,7 +18,7 @@ export default function Users() {
 
   const toggleVerification = (id, currentStatus) => {
     const newStatus = !currentStatus;
-  
+
     axios.put(
       `http://localhost:5000/api/admin/verify/${id}`,
       { isVerified: newStatus },
@@ -44,12 +41,11 @@ export default function Users() {
       setMessage('❌ Failed to update user verification');
     });
   };
-  
-  
+
+  /*Sara Shmerti*/
 
   return (
-    <div className="users-container">
-      {/* Header */}
+    <div className="users-container"> 
       <Header />
 
       <main className="users-main">
@@ -59,27 +55,29 @@ export default function Users() {
         {users.length === 0 ? (
           <p className="users-empty">No users found.</p>
         ) : (
-          users.map(user => (
-            <div key={user._id} className="users-card">
-              <p><strong>Name:</strong> {user.name || 'No name'} {user.surname || ''}</p>
-              <p><strong>Email:</strong> {user.email}</p>
-              <p><strong>Status:</strong> {user.isVerified ? '✅ Verified' : '⏳ Pending'}</p>
-              {user.mecenatImage && (
-                <img
-                  src={`http://localhost:5000/${user.mecenatImage}`}
-                  alt="Mecenat"
-                  className="users-image"
-                />
-              )}
-              <br />
-              <button
-                onClick={() => toggleVerification(user._id, user.isVerified)}
-                className={`users-button ${user.isVerified ? 'unverify' : 'verify'}`}
-              >
-                {user.isVerified ? 'Unverify' : 'Verify'}
-              </button>
-            </div>
-          ))
+          <div className="users-grid">
+            {users.map(user => (
+              <div key={user._id} className="users-card">
+                <p><strong>Name:</strong> {user.name || 'No name'} {user.surname || ''}</p>
+                <p><strong>Email:</strong> {user.email}</p>
+                <p><strong>Status:</strong> {user.isVerified ? '✅ Verified' : '⏳ Pending'}</p>
+                {user.mecenatImage && (
+                  <img
+                    src={`http://localhost:5000/${user.mecenatImage}`}
+                    alt="Mecenat"
+                    className="users-image"
+                  />
+                )}
+                <br />
+                <button
+                  onClick={() => toggleVerification(user._id, user.isVerified)}
+                  className={`users-button ${user.isVerified ? 'unverify' : 'verify'}`}
+                >
+                  {user.isVerified ? 'Unverify' : 'Verify'}
+                </button>
+              </div>
+            ))}
+          </div>
         )}
       </main>
     </div>

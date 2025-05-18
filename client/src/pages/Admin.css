@@ -1,136 +1,129 @@
-/* Fullscreen center layout */
+/* Sara Shmerti */
+
+/* Layout and spacing */
 .admin-main {
-  height: auto;
-  width: auto;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 120px 20px 40px;
+  background-color: #f9fafc;
+  min-height: 100vh;
+}
+
+/* Dashboard and Grid Layout */
+.admin-dashboard {
+  display: flex;
+  flex-wrap: wrap;
   justify-content: center;
-  padding-top: 100px; /* To offset fixed header */
-  background-color: #f8f9fa;
+  gap: 40px;
+  width: 100%;
+  max-width: 1200px;
 }
 
-.admin-header {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-  background-color: #f2f2f2;
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  z-index: 1000;
-}
-
-.admin-logo-box {
-  display: flex;
-  align-items: center;
-}
-
-.admin-logo {
-  height: 50px;
-  margin-right: 10px;
-}
-
-.admin-title {
-  margin: 0;
-}
-
-.admin-nav {
-  display: flex;
-  gap: 15px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-/* Activity box */
+/* Admin box (left panel) */
 .admin-box {
+  flex: 1 1 300px;
   background-color: #ffffff;
   padding: 20px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
   text-align: center;
-  margin-bottom: 30px;
+  min-width: 280px;
 }
 
-.booking-list {
-  background-color: #f8f9fa;
-  padding: 10px;
-  margin-top: 10px;
-  border-left: 3px solid #007bff;
+/* Activity cards container */
+.activity-list {
+  flex: 3 1 600px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
 }
 
-
-.add-button {
-  font-size: 24px;
-  padding: 6px 18px 11px 18px;
-  border-radius: 50%;
-  border: none;
-  background-color: #28a745;
-  color: #fff;
-  cursor: pointer;
-  margin-bottom: 10px;
+/* Individual activity cards */
+.activity-card {
+  background-color: #e8f0ff;
+  border-radius: 10px;
+  padding: 16px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+  transition: 0.3s ease;
 }
 
+.activity-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+/* Form styling */
 .admin-form {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 12px;
+  margin-top: 15px;
 }
 
 .admin-form input {
-  padding: 8px;
+  padding: 10px;
+  border-radius: 6px;
   border: 1px solid #ccc;
-  border-radius: 5px;
+
 }
 
 .save-button {
-  padding: 10px;
+
   background-color: #007bff;
-  color: white;
+  padding: 10px;
   border: none;
+  color: white;
+  font-weight: bold;
   border-radius: 6px;
   cursor: pointer;
 }
 
-/* Activity list */
-.activity-list {
-  width: 100%;
-  max-width: 500px;
-}
-
-.activity-card {
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  padding: 15px;
-  margin-bottom: 15px;
-  background-color: #f9f9f9;
-}
-
-.activity-buttons {
-  display: flex;
-  gap: 10px;
+/* Buttons */
+.add-button {
+  background-color: #28a745;
+  color: white;
+  font-size: 22px;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 50%;
   margin-top: 10px;
+  cursor: pointer;
 }
 
 .edit-button {
   background-color: #ffc107;
-  padding: 5px 10px;
+  color: black;
+  padding: 5px 12px;
   border: none;
   border-radius: 5px;
-  color: #000;
+
   cursor: pointer;
 }
 
 .remove-button {
   background-color: #dc3545;
-  padding: 5px 10px;
+  color: white;
+  padding: 5px 12px;
   border: none;
   border-radius: 5px;
-  color: #fff;
+  
   cursor: pointer;
+}
+
+.activity-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+/* Booked user list */
+.booking-list {
+  margin-top: 10px;
+  padding: 10px;
+  background-color: #f4f4f4;
+  border-left: 4px solid #007bff;
+  border-radius: 5px;
 }
