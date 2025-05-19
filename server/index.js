@@ -12,6 +12,11 @@ const contactRoutes = require('./routes/contact');
 
 const app = express();
 
+app.use(cors({
+  origin: process.env.FRONTEND_URL,
+  credentials: true
+}));
+
 // Middlewares
 app.use(cors());
 app.use(express.json());
