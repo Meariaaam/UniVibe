@@ -31,7 +31,7 @@ const ContactUs = () => {
     if (file) data.append('attachment', file);
 
     try {
-      const response = await fetch('http://localhost:5000/api/contact', {
+      const response = await fetch('https://univibe-05vi.onrender.com/api/contact', {
         method: 'POST',
         body: data,
       });

@@ -17,7 +17,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/login', form);
+      const res = await axios.post('https://univibe-05vi.onrender.com/api/auth/login', form);
 
       if (res.status === 200) {
         const { user, token } = res.data;

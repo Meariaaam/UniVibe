@@ -8,7 +8,7 @@ export default function Users() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/admin/pending')
+    axios.get('https://univibe-05vi.onrender.com/api/admin/pending')
       .then(res => setUsers(res.data))
       .catch(err => {
         console.error(err);
@@ -20,7 +20,7 @@ export default function Users() {
     const newStatus = !currentStatus;
 
     axios.put(
-      `http://localhost:5000/api/admin/verify/${id}`,
+      `https://univibe-05vi.onrender.com/api/admin/verify/${id}`,
       { isVerified: newStatus },
       {
         headers: {
@@ -62,7 +62,7 @@ export default function Users() {
                 <p><strong>Status:</strong> {user.isVerified ? '✅ Verified' : '⏳ Pending'}</p>
                 {user.mecenatImage && (
                   <img
-                    src={`http://localhost:5000/${user.mecenatImage}`}
+                    src={`https://univibe-05vi.onrender.com/${user.mecenatImage}`}
                     alt="Mecenat"
                     className="users-image"
                   />

@@ -13,7 +13,7 @@ export default function Activities() {
   useEffect(() => {
     const fetchActivities = async () => {
       try {
-        const res = await axios.get('http://localhost:5000/api/activities');
+        const res = await axios.get('https://univibe-05vi.onrender.com/api/activities');
         setActivities(res.data);
       } catch (err) {
         console.error('Failed to fetch activities:', err);

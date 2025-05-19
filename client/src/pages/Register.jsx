@@ -32,7 +32,7 @@ export default function Register() {
     if (file) formData.append('file', file);
 
     try {
-      const res = await axios.post('http://localhost:5000/api/auth/register', formData);
+      const res = await axios.post('https://univibe-05vi.onrender.com/api/auth/register', formData);
       setMessage('✅ Registered! Waiting for verification.');
     } catch (err) {
       console.error(err.response?.data || err.message);

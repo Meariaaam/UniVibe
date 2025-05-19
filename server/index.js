@@ -14,6 +14,10 @@ const app = express();
 
 // Middlewares
 app.use(cors());
+app.use(cors({
+  origin: process.env.FRONTEND_URL,
+  credentials: true
+}));
 app.use(express.json());
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
@@ -32,13 +36,13 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/activities', activityRoutes); // New route for activities
 app.use('/api/contact', contactRoutes);
 
-// if (process.env.NODE_ENV === 'production') {
-//   app.use(express.static(path.join(__dirname, '../client/dist')));
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../client/dist')));
 
-//   app.get('*', (req, res) => {
-//     res.sendFile(path.join(__dirname, '../client/dist/index.html'));
-//   });
-// }
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/dist/index.html'));
+  });
+}
 
 // Server start
 const PORT = process.env.PORT || 5000;

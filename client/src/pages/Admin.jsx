@@ -29,7 +29,7 @@ export default function Admin() {
   const handleShowBookings = async (index) => {
   const activity = activities[index];
   try {
-    const res = await fetch(`http://localhost:5000/api/activities/${activity._id}/bookings`);
+    const res = await fetch(`https://univibe-05vi.onrender.com/api/activities/${activity._id}/bookings`);
     const data = await res.json();
     setSelectedBookings(data);
     setShowBookingsIndex(index);
@@ -41,7 +41,7 @@ export default function Admin() {
 
   const fetchActivities = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/activities');
+      const response = await fetch('https://univibe-05vi.onrender.com/api/activities');
       const data = await response.json();
       setActivities(data);
     } catch (error) {
@@ -103,14 +103,14 @@ const handleSubmit = async (e) => {
       if (editingIndex !== null) {
         // Update existing activity
         const id = activities[editingIndex]._id;
-        response = await fetch(`http://localhost:5000/api/activities/${id}`, {
+        response = await fetch(`https://univibe-05vi.onrender.com/api/activities/${id}`, {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(correctedData)
         });
       } else {
         // Create new activity
-        response = await fetch('http://localhost:5000/api/activities', {
+        response = await fetch('https://univibe-05vi.onrender.com/api/activities', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(correctedData)
@@ -157,7 +157,7 @@ const handleSubmit = async (e) => {
   const handleRemove = async (index) => {
     const activityToDelete = activities[index];
     try {
-      await fetch(`http://localhost:5000/api/activities/${activityToDelete._id}`, {
+      await fetch(`https://univibe-05vi.onrender.com/api/activities/${activityToDelete._id}`, {
         method: 'DELETE',
       });
 
