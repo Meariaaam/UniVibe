@@ -32,12 +32,6 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/activities', activityRoutes); // New route for activities
 app.use('/api/contact', contactRoutes);
 
-const clientBuildPath = path.join(__dirname, '../client/dist');
-app.use(express.static(clientBuildPath));
-
-app.get('/*', (req, res) => {
-  res.sendFile(path.join(clientBuildPath, 'index.html'));
-});
 
 // Server start
 const PORT = process.env.PORT || 5000;
