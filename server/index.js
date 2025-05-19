@@ -12,10 +12,10 @@ const contactRoutes = require('./routes/contact');
 
 const app = express();
 
-app.use(cors({
-  origin: process.env.FRONTEND_URL,
-  credentials: true
-}));
+// app.use(cors({
+//   origin: process.env.FRONTEND_URL,
+//   credentials: true
+// }));
 
 // Middlewares
 app.use(cors());
@@ -37,6 +37,13 @@ app.use('/api/admin', adminRoutes);
 app.use('/api/activities', activityRoutes); // New route for activities
 app.use('/api/contact', contactRoutes);
 
+const clientBuildPath = path.join(__dirname, '../client/dist');
+app.use(express.static(clientBuildPath));
+
+// Handle all other routes by serving index.html (for React Router)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(clientBuildPath, 'index.html'));
+});
 
 // Server start
 const PORT = process.env.PORT || 5000;
